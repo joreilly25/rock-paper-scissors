@@ -22,11 +22,11 @@ function computerPlay() {
     }
     return compSelector;
 }
-// console.log("computer: " + compSelection);
 
-
-
-// console.log("player: " + playerSelection);
+function userPlay() {
+    let playerSelection = prompt("Please enter \"Rock, Paper, or Scissors\"").toLowerCase();
+    return playerSelection;
+}
 
 function playRound(playerSelection, compSelection) {
     if (playerSelection == "rock" && compSelection == "scissors") {
@@ -56,10 +56,11 @@ function playRound(playerSelection, compSelection) {
 function game() {
     for (let i = 0; i < 5; i++) {
         const compSelection = computerPlay();
-        const playerSelection = prompt("Please enter \"Rock, Paper, or Scissors\"").toLowerCase();
+        const playerSelection = userPlay();
         playRound(playerSelection, compSelection);
-        console.log ("Score is:\n" + "Player: " + playerScore + "\n" + "Compuer: " + compScore + "\n");
+        console.log ("Score is:\n" + "Player: " + playerScore + "\n" + "Computer: " + compScore + "\n");
     }
+
     if (playerScore > compScore) {
         console.log("\nCongratulations! You beat the computer in Rock, Paper, Scissors!");
     } else if (playerScore < compScore) {
@@ -67,6 +68,8 @@ function game() {
     }  else {
         console.log("\nLooks like we got ourselves a draw!");
     }
+    // console.log("computer: " + compSelection);
+    // console.log("player: " + playerSelection);
 }
 
 game();
