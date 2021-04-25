@@ -37,10 +37,10 @@ function playRound(playerSelection, compSelection) {
         return console.log("You Win! Paper beats Rock!");
     } else if (playerSelection == "paper" && compSelection == "scissors") {
         compScore++;
-        return console.log("You Lose! Scissors beats paper!");
+        return console.log("You Lose! Scissors beats Paper!");
     } else if (playerSelection == "scissors" && compSelection == "paper") {
         playerScore++;
-        return console.log("You Win! Scissors beats paper!");
+        return console.log("You Win! Scissors beats Paper!");
     } else {
         return console.log("Draw! " + playerSelection + " vs " + compSelection + "!")
     }
