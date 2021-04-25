@@ -1,5 +1,5 @@
 // function will need to generate a random number out of 3 total options - done
-// depending on that number it will assign either rock, paper or scissors and return that value
+// depending on that number it will assign either rock, paper or scissors and return that value - done
 // function will need to take user input of either rock, paper, or scissors anything else should result in a try again
 // function will return the user's inputed value
 // create a function to take these values and compare them to delcare a winner | this will be each round of the game
