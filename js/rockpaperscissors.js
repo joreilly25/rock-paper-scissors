@@ -3,8 +3,8 @@
 // function will need to take user input of either rock, paper, or scissors anything else should result in a try again
 // function will return the user's inputed value - needed?
 // create a function to take these values and compare them to delcare a winner | this will be each round of the game - done
-// create a function to wrap all of these functions and loop through muiltiple games
-// the game function should keep score (5 games) and delcare a winner at the end
+// create a function to wrap all of these functions and loop through muiltiple games - done
+// the game function should keep score (5 games) and delcare a winner at the end - done
 // Rock beats Scissors, Scissors beats Paper, Paper beats Rock
 
 let playerScore = 0;
