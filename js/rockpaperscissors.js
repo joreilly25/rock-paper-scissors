@@ -11,16 +11,9 @@ let playerScore = 0;
 let compScore = 0;
 
 function computerPlay() {
-    let randNum = Math.floor(Math.random() * 3);
-    let compSelector;
-    if (randNum < 1) {
-        compSelector = "rock";
-    } else if (randNum == 1) {
-        compSelector = "paper" ;
-    } else {
-        compSelector = "scissors";
-    }
-    return compSelector;
+    let compSelector = ['rock', 'paper', 'scissors']
+    randCompSelector = compSelector[Math.floor(Math.random() * compSelector.length)];
+    return randCompSelector;
 }
 
 function userPlay() {
