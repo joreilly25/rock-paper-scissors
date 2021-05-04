@@ -12,15 +12,12 @@ let compScore = 0;
 
 function computerPlay() {
   let compSelector = ["rock", "paper", "scissors"];
-  randCompSelector =
-    compSelector[Math.floor(Math.random() * compSelector.length)];
+  randCompSelector = compSelector[Math.floor(Math.random() * compSelector.length)];
   return randCompSelector;
 }
 
 function userPlay() {
-  let playerSelection = prompt(
-    'Please enter "Rock, Paper, or Scissors"'
-  ).toLowerCase();
+  let playerSelection = prompt('Please enter "Rock, Paper, or Scissors"').toLowerCase();
   return playerSelection;
 }
 
@@ -44,9 +41,7 @@ function playRound(playerSelection, compSelection) {
     playerScore++;
     return console.log("You Win! Scissors beats Paper!");
   } else {
-    return console.log(
-      "Draw! " + playerSelection + " vs " + compSelection + "!"
-    );
+    return console.log("Draw! " + playerSelection + " vs " + compSelection + "!");
   }
 }
 
@@ -55,21 +50,11 @@ function game() {
     const compSelection = computerPlay();
     const playerSelection = userPlay();
     playRound(playerSelection, compSelection);
-    console.log(
-      "Score is:\n" +
-        "Player: " +
-        playerScore +
-        "\n" +
-        "Computer: " +
-        compScore +
-        "\n"
-    );
+    console.log("Score is:\n" + "Player: " + playerScore + "\n" + "Computer: " + compScore + "\n");
   }
 
   if (playerScore > compScore) {
-    console.log(
-      "\nCongratulations! You beat the computer in Rock, Paper, Scissors!"
-    );
+    console.log("\nCongratulations! You beat the computer in Rock, Paper, Scissors!");
   } else if (playerScore < compScore) {
     console.log("\nOh no! Better luck next time!");
   } else {
