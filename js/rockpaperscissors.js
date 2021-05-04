@@ -11,58 +11,72 @@ let playerScore = 0;
 let compScore = 0;
 
 function computerPlay() {
-    let compSelector = ['rock', 'paper', 'scissors']
-    randCompSelector = compSelector[Math.floor(Math.random() * compSelector.length)];
-    return randCompSelector;
+  let compSelector = ["rock", "paper", "scissors"];
+  randCompSelector =
+    compSelector[Math.floor(Math.random() * compSelector.length)];
+  return randCompSelector;
 }
 
 function userPlay() {
-    let playerSelection = prompt("Please enter \"Rock, Paper, or Scissors\"").toLowerCase();
-    return playerSelection;
+  let playerSelection = prompt(
+    'Please enter "Rock, Paper, or Scissors"'
+  ).toLowerCase();
+  return playerSelection;
 }
 
 function playRound(playerSelection, compSelection) {
-    if (playerSelection == "rock" && compSelection == "scissors") {
-        playerScore++;
-        return console.log("You Win! Rock beats Scissors");
-    }
-    else if (playerSelection == "scissors" && compSelection == "rock") {
-        compScore++;
-        return console.log("You Lose! Rock beats Scissors");
-    } else if (playerSelection == "rock" && compSelection == "paper") {
-        compScore++;
-        return console.log("You Lose! Paper beats Rock!");
-    } else if (playerSelection == "paper" && compSelection == "rock") {
-        playerScore++;
-        return console.log("You Win! Paper beats Rock!");
-    } else if (playerSelection == "paper" && compSelection == "scissors") {
-        compScore++;
-        return console.log("You Lose! Scissors beats Paper!");
-    } else if (playerSelection == "scissors" && compSelection == "paper") {
-        playerScore++;
-        return console.log("You Win! Scissors beats Paper!");
-    } else {
-        return console.log("Draw! " + playerSelection + " vs " + compSelection + "!")
-    }
+  if (playerSelection == "rock" && compSelection == "scissors") {
+    playerScore++;
+    return console.log("You Win! Rock beats Scissors");
+  } else if (playerSelection == "scissors" && compSelection == "rock") {
+    compScore++;
+    return console.log("You Lose! Rock beats Scissors");
+  } else if (playerSelection == "rock" && compSelection == "paper") {
+    compScore++;
+    return console.log("You Lose! Paper beats Rock!");
+  } else if (playerSelection == "paper" && compSelection == "rock") {
+    playerScore++;
+    return console.log("You Win! Paper beats Rock!");
+  } else if (playerSelection == "paper" && compSelection == "scissors") {
+    compScore++;
+    return console.log("You Lose! Scissors beats Paper!");
+  } else if (playerSelection == "scissors" && compSelection == "paper") {
+    playerScore++;
+    return console.log("You Win! Scissors beats Paper!");
+  } else {
+    return console.log(
+      "Draw! " + playerSelection + " vs " + compSelection + "!"
+    );
+  }
 }
 
 function game() {
-    for (let i = 0; i < 5; i++) {
-        const compSelection = computerPlay();
-        const playerSelection = userPlay();
-        playRound(playerSelection, compSelection);
-        console.log ("Score is:\n" + "Player: " + playerScore + "\n" + "Computer: " + compScore + "\n");
-    }
+  for (let i = 0; i < 5; i++) {
+    const compSelection = computerPlay();
+    const playerSelection = userPlay();
+    playRound(playerSelection, compSelection);
+    console.log(
+      "Score is:\n" +
+        "Player: " +
+        playerScore +
+        "\n" +
+        "Computer: " +
+        compScore +
+        "\n"
+    );
+  }
 
-    if (playerScore > compScore) {
-        console.log("\nCongratulations! You beat the computer in Rock, Paper, Scissors!");
-    } else if (playerScore < compScore) {
-        console.log ("\nOh no! Better luck next time!");
-    }  else {
-        console.log("\nLooks like we got ourselves a draw!");
-    }
-    // console.log("computer: " + compSelection);
-    // console.log("player: " + playerSelection);
+  if (playerScore > compScore) {
+    console.log(
+      "\nCongratulations! You beat the computer in Rock, Paper, Scissors!"
+    );
+  } else if (playerScore < compScore) {
+    console.log("\nOh no! Better luck next time!");
+  } else {
+    console.log("\nLooks like we got ourselves a draw!");
+  }
+  // console.log("computer: " + compSelection);
+  // console.log("player: " + playerSelection);
 }
 
 game();
