@@ -10,11 +10,16 @@
 let playerScore = 0;
 let compScore = 0;
 const selections = document.querySelectorAll("button");
+const results = document.querySelector("#results");
+const played = document.querySelector('#played');
 
 selections.forEach((button) => {
   button.addEventListener("click", () => {
     let playerSelection = button.id;
-    console.log(`You selected: ${playerSelection}`);
+    // const selection = document.createElement('h3');
+    // selection.textContent = `You selected: ${playerSelection.toUpperCase()} and Computer Selected: ${randCompSelector.toUpperCase()}`
+    // played.appendChild(selection);
+    console.log(`You selected: ${playerSelection.toUpperCase()}`);
     computerPlay();
     playRound(playerSelection, randCompSelector);
   });
@@ -23,6 +28,9 @@ selections.forEach((button) => {
 function computerPlay() {
   let compSelector = ["rock", "paper", "scissors"];
   randCompSelector = compSelector[Math.floor(Math.random() * compSelector.length)];
+  // const compSelection = document.createElement('h3');
+  // compSelection.textContent = `Computer Selected: ${randCompSelector.toUpperCase()}`
+  // played.appendChild(compSelection);
   console.log(`Computer Selected: ${randCompSelector}`);
   return randCompSelector;
 }
@@ -32,12 +40,18 @@ function userPlay(btnClicked) {
   return playerSelection;
 }
 
+
 // rock.addEventListener('click', userPlay);
 
 function playRound(playerSelection, compSelection) {
+  const selection = document.createElement('h3');
+  selection.textContent = `${playerSelection.toUpperCase()} vs ${randCompSelector.toUpperCase()}`
+  played.appendChild(selection);
+  const roundResults = document.createElement('h4');
   if (playerSelection == "rock" && compSelection == "scissors") {
     playerScore++;
-    return console.log("You Win! Rock beats Scissors");
+    roundResults.textContent = "You Win! Rock beats Scissors";
+    return results.appendChild(roundResults);
   } else if (playerSelection == "scissors" && compSelection == "rock") {
     compScore++;
     return console.log("You Lose! Rock beats Scissors");
@@ -79,6 +93,5 @@ function playRound(playerSelection, compSelection) {
 //   // console.log("player: " + playerSelection);
 // }
 
-const results = document.querySelector("#results");
 
 // game();
