@@ -11,8 +11,8 @@ let playerScore = 0;
 let compScore = 0;
 const selections = document.querySelectorAll("button");
 const results = document.querySelector("#results");
-const played = document.querySelector('#played');
-const scoreboard = document.querySelector('#scoreboard');
+const played = document.querySelector("#played");
+const scoreboard = document.querySelector("#scoreboard");
 
 selections.forEach((button) => {
   button.addEventListener("click", () => {
@@ -23,13 +23,13 @@ selections.forEach((button) => {
     console.log(`You selected: ${playerSelection.toUpperCase()}`);
     computerPlay();
     playRound(playerSelection, randCompSelector);
-    scoreboard.textContent = `Player: ${playerScore} Computer: ${compScore}`
+    scoreboard.textContent = `Player: ${playerScore} Computer: ${compScore}`;
   });
 });
 
 function removeAllChildNodes(parent) {
   while (parent.firstChild) {
-      parent.removeChild(parent.firstChild);
+    parent.removeChild(parent.firstChild);
   }
 }
 
@@ -48,17 +48,16 @@ function userPlay(btnClicked) {
   return playerSelection;
 }
 
-
 // rock.addEventListener('click', userPlay);
 
 function playRound(playerSelection, compSelection) {
   removeAllChildNodes(played);
-  const selection = document.createElement('h3');
-  selection.textContent = `${playerSelection.toUpperCase()} vs ${randCompSelector.toUpperCase()}`
+  const selection = document.createElement("h3");
+  selection.textContent = `${playerSelection.toUpperCase()} vs ${randCompSelector.toUpperCase()}`;
   played.appendChild(selection);
-  const roundResultsWin = document.createElement('h4');
-  const roundResultsLose = document.createElement('h4');
-  const roundResultsDraw = document.createElement('h4');
+  const roundResultsWin = document.createElement("h4");
+  const roundResultsLose = document.createElement("h4");
+  const roundResultsDraw = document.createElement("h4");
   roundResultsWin.textContent = `You Win! ${playerSelection.toUpperCase()} beats ${compSelection.toUpperCase()}`;
   roundResultsLose.textContent = `You Lose! ${playerSelection.toUpperCase()} is beaten by ${compSelection.toUpperCase()}`;
   roundResultsDraw.textContent = `Draw! ${playerSelection.toUpperCase()} vs ${compSelection.toUpperCase()}`;
@@ -105,6 +104,5 @@ function playRound(playerSelection, compSelection) {
 //   // console.log("computer: " + compSelection);
 //   // console.log("player: " + playerSelection);
 // }
-
 
 // game();
