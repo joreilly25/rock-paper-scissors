@@ -12,6 +12,7 @@ let compScore = 0;
 const selections = document.querySelectorAll("button");
 const results = document.querySelector("#results");
 const played = document.querySelector('#played');
+const scoreboard = document.querySelector('#scoreboard');
 
 selections.forEach((button) => {
   button.addEventListener("click", () => {
@@ -22,8 +23,15 @@ selections.forEach((button) => {
     console.log(`You selected: ${playerSelection.toUpperCase()}`);
     computerPlay();
     playRound(playerSelection, randCompSelector);
+    scoreboard.textContent = `Player: ${playerScore} Computer: ${compScore}`
   });
 });
+
+function removeAllChildNodes(parent) {
+  while (parent.firstChild) {
+      parent.removeChild(parent.firstChild);
+  }
+}
 
 function computerPlay() {
   let compSelector = ["rock", "paper", "scissors"];
@@ -44,31 +52,36 @@ function userPlay(btnClicked) {
 // rock.addEventListener('click', userPlay);
 
 function playRound(playerSelection, compSelection) {
+  removeAllChildNodes(played);
   const selection = document.createElement('h3');
   selection.textContent = `${playerSelection.toUpperCase()} vs ${randCompSelector.toUpperCase()}`
   played.appendChild(selection);
-  const roundResults = document.createElement('h4');
+  const roundResultsWin = document.createElement('h4');
+  const roundResultsLose = document.createElement('h4');
+  const roundResultsDraw = document.createElement('h4');
+  roundResultsWin.textContent = `You Win! ${playerSelection.toUpperCase()} beats ${compSelection.toUpperCase()}`;
+  roundResultsLose.textContent = `You Lose! ${playerSelection.toUpperCase()} is beaten by ${compSelection.toUpperCase()}`;
+  roundResultsDraw.textContent = `Draw! ${playerSelection.toUpperCase()} vs ${compSelection.toUpperCase()}`;
   if (playerSelection == "rock" && compSelection == "scissors") {
     playerScore++;
-    roundResults.textContent = `You Win! ${playerSelection.toUpperCase()} beats ${compSelection.toUpperCase()}`;
-    return results.appendChild(roundResults);
+    return results.appendChild(roundResultsWin);
   } else if (playerSelection == "scissors" && compSelection == "rock") {
     compScore++;
-    return console.log("You Lose! Rock beats Scissors");
+    return results.appendChild(roundResultsLose);
   } else if (playerSelection == "rock" && compSelection == "paper") {
     compScore++;
-    return console.log("You Lose! Paper beats Rock!");
+    return results.appendChild(roundResultsLose);
   } else if (playerSelection == "paper" && compSelection == "rock") {
     playerScore++;
-    return console.log("You Win! Paper beats Rock!");
+    return results.appendChild(roundResultsWin);
   } else if (playerSelection == "paper" && compSelection == "scissors") {
     compScore++;
-    return console.log("You Lose! Scissors beats Paper!");
+    return results.appendChild(roundResultsLose);
   } else if (playerSelection == "scissors" && compSelection == "paper") {
     playerScore++;
-    return console.log("You Win! Scissors beats Paper!");
+    return results.appendChild(roundResultsWin);
   } else {
-    return console.log("Draw! " + playerSelection + " vs " + compSelection + "!");
+    return results.appendChild(roundResultsDraw);
   }
 }
 
