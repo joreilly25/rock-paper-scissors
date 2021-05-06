@@ -50,7 +50,7 @@ function playRound(playerSelection, compSelection) {
   const roundResults = document.createElement('h4');
   if (playerSelection == "rock" && compSelection == "scissors") {
     playerScore++;
-    roundResults.textContent = "You Win! Rock beats Scissors";
+    roundResults.textContent = `You Win! ${playerSelection.toUpperCase()} beats ${compSelection.toUpperCase()}`;
     return results.appendChild(roundResults);
   } else if (playerSelection == "scissors" && compSelection == "rock") {
     compScore++;
