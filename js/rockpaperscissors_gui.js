@@ -13,6 +13,7 @@ const selections = document.querySelectorAll("button");
 const results = document.querySelector("#results");
 const played = document.querySelector("#played");
 const scoreboard = document.querySelector("#scoreboard");
+let gamesPlayed = 0;
 
 selections.forEach((button) => {
   button.addEventListener("click", () => {
@@ -24,6 +25,9 @@ selections.forEach((button) => {
     computerPlay();
     playRound(playerSelection, randCompSelector);
     scoreboard.textContent = `Player: ${playerScore} Computer: ${compScore}`;
+    if (gamesPlayed == 5) {
+      checkWinner();
+    }
   });
 });
 
@@ -52,6 +56,7 @@ function userPlay(btnClicked) {
 
 function playRound(playerSelection, compSelection) {
   removeAllChildNodes(played);
+  removeAllChildNodes(results);
   const selection = document.createElement("h3");
   selection.textContent = `${playerSelection.toUpperCase()} vs ${randCompSelector.toUpperCase()}`;
   played.appendChild(selection);
@@ -61,6 +66,7 @@ function playRound(playerSelection, compSelection) {
   roundResultsWin.textContent = `You Win! ${playerSelection.toUpperCase()} beats ${compSelection.toUpperCase()}`;
   roundResultsLose.textContent = `You Lose! ${playerSelection.toUpperCase()} is beaten by ${compSelection.toUpperCase()}`;
   roundResultsDraw.textContent = `Draw! ${playerSelection.toUpperCase()} vs ${compSelection.toUpperCase()}`;
+  gamesPlayed++;
   if (playerSelection == "rock" && compSelection == "scissors") {
     playerScore++;
     return results.appendChild(roundResultsWin);
@@ -82,6 +88,17 @@ function playRound(playerSelection, compSelection) {
   } else {
     return results.appendChild(roundResultsDraw);
   }
+}
+
+function checkWinner() {
+  if (playerScore > compScore) {
+    alert(`Congratulations YOU WIN!`);
+  } else if (compScore > playerScore) {
+    alert("You Lose, better luck next time!");
+  } else {
+    alert("We have a DRAW!");
+  }
+  location.reload();
 }
 
 // playRound(playerSelection, compSelection);
